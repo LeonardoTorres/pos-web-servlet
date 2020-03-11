@@ -4,6 +4,7 @@
     Author     : leonardo
 --%>
 
+<%@page import="br.fjn.edu.pos.web.domain.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,15 +13,16 @@
         <title>Página Inicial</title>
     </head>
     <body>
+         <%  
+             User user = (User) session.getAttribute("userLogged");
+         %>
         <main>
             <nav>
                 <p>Menu aqui</p>
             </nav>
             <section>
                 <p style="text-align: right;">
-                <%  
-                    out.print("Usuário logado: " + application.getAttribute("userName"));
-                %>
+                    <%=user.getName()%>
                 </p>
                 <p>Card's aqui</p>
                 <p>Card's aqui</p>
