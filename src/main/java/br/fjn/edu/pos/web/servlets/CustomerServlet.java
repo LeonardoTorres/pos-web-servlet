@@ -7,6 +7,9 @@ package br.fjn.edu.pos.web.servlets;
 
 import br.fjn.edu.pos.web.domain.Customer;
 import java.io.IOException;
+import java.util.LinkedList;
+import java.util.List;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,6 +32,19 @@ public class CustomerServlet extends HttpServlet {
         Integer age = Integer.parseInt(req.getParameter("age"));
         
         Customer customer = new Customer(name, cpf, age);
+        ServletContext context = getServletContext();
+        
+        List<Customer> customerList;
+        
+        if (context.getAttribute("customerList") ==  null){
+            customerList = new LinkedList<>();
+        }else{
+            customerList = (List<Customer>) 
+                    context.getAttribute("customerList");
+        }
+        
+        customerList.add(customer);
+        context.setAttribute("customerList", customerList);
         resp.sendRedirect("customer/customers.jsp");
         
     }
