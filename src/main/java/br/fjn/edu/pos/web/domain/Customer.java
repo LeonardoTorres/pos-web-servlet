@@ -5,6 +5,8 @@
  */
 package br.fjn.edu.pos.web.domain;
 
+import java.util.Date;
+
 /**
  *
  * @author leonardo
@@ -14,11 +16,14 @@ public class Customer {
     private String name;
     private String cpf;
     private Integer age;
+    private Address address;
+    private Date createdAt;
 
     public Customer(String name, String cpf, Integer age) {
         this.name = name;
         this.cpf = cpf;
         this.age = age;
+        this.createdAt = new Date();
     }
 
     public String getName() {
@@ -45,9 +50,20 @@ public class Customer {
         this.age = age;
     }
 
-    
+    public Address getAddress() {
+        return address;
+    }
 
-    
-    
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }  
     
 }

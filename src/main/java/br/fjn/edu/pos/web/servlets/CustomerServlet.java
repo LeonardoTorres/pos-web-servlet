@@ -5,10 +5,12 @@
  */
 package br.fjn.edu.pos.web.servlets;
 
+import br.fjn.edu.pos.web.domain.Address;
 import br.fjn.edu.pos.web.domain.Customer;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
+import javax.json.Json;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,8 +32,14 @@ public class CustomerServlet extends HttpServlet {
         String name = req.getParameter("name");
         String cpf = req.getParameter("cpf");
         Integer age = Integer.parseInt(req.getParameter("age"));
+        String street = req.getParameter("street");
+        String number = req.getParameter("number");
+        
+        Address address = new Address(street, number);
         
         Customer customer = new Customer(name, cpf, age);
+        customer.setAddress(address);
+        
         ServletContext context = getServletContext();
         
         List<Customer> customerList;
@@ -42,8 +50,9 @@ public class CustomerServlet extends HttpServlet {
             customerList = (List<Customer>) 
                     context.getAttribute("customerList");
         }
-        
+ 
         customerList.add(customer);
+        context.setAttribute("customer", customer);
         context.setAttribute("customerList", customerList);
         resp.sendRedirect("customer/customers.jsp");
         

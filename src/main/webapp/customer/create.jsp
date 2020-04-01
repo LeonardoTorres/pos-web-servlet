@@ -28,6 +28,14 @@
                         <input id="age" type="text" name="age"/>
                     </div>
                     <div>
+                        <label for="street">Rua:</label>
+                        <input id="street" type="text" name="street"/>
+                    </div>
+                    <div>
+                        <label for="number">Número:</label>
+                        <input id="number" type="text" name="number"/>
+                    </div>
+                    <div>
                         <button type="submit">Salvar</button>
                     </div>
                 </form>
