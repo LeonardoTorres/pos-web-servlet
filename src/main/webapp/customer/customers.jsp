@@ -18,7 +18,7 @@
 
         <a href="create.jsp">Novo cliente</a>  
         <div>
-            <h4>Último cadastrado: ${customer.name} </h4>
+            <h4>Último cadastrado: ${customer.id} </h4>
             <h4>Último endereço cadastrado: ${customer.address.street}</h4>
         </div>
         <div>
@@ -45,11 +45,19 @@
                             <td>
                                 <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${customer.createdAt}"/>
                             </td>
-                            <td>Editar</td>
+                            <td>
+                                <a href="${pageContext.request.contextPath}/customers?customerId=${customer.id}">Editar</a> 
+                                Excluir
+                            </td>
                         </tr>
                     </c:forEach>
                 </tbody>
             </table>
+        </div>
+        <div>
+            <form action="pos-web/customer/customers" method="PUT">
+                <button type="submit">Atualizar</button>
+            </form>
         </div>
     </body>
 </html>

@@ -6,6 +6,7 @@
 package br.fjn.edu.pos.web.domain;
 
 import java.util.Date;
+import java.util.UUID;
 
 /**
  *
@@ -13,6 +14,7 @@ import java.util.Date;
  */
 public class Customer {
     
+    private String id; 
     private String name;
     private String cpf;
     private Integer age;
@@ -24,6 +26,7 @@ public class Customer {
         this.cpf = cpf;
         this.age = age;
         this.createdAt = new Date();
+        this.id = UUID.randomUUID().toString();
     }
 
     public String getName() {
@@ -65,5 +68,10 @@ public class Customer {
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
     }  
+
+    public String getId() {
+        return id;
+    }
+    
     
 }
