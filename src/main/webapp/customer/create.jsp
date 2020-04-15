@@ -9,11 +9,15 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="${pageContext.request.contextPath}/css/style.css" rel="stylesheet"/>
+        <link href="${pageContext.request.contextPath}/css/customers/customers.css" rel="stylesheet"/>
         <title>Novo Cliente</title>
     </head>
     <body>
-        <main>
+        <main class="create-content">
             <section>
+                <h2>Novo Cliente</h2>
+                <hr/>
                 <form action="/pos-web/customers" method="post">
                     <div>
                         <label for="name">Nome:</label>
@@ -36,7 +40,7 @@
                         <input id="number" type="text" name="number"/>
                     </div>
                     <div>
-                        <button type="submit">Salvar</button>
+                        <button class="btn-save" type="submit">Salvar</button>
                     </div>
                 </form>
             </section>

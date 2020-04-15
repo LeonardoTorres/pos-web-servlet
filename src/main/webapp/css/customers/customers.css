@@ -1,0 +1,46 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Apr 7, 2020, 4:21:39 PM
+    Author     : leonardo
+*/
+
+.create-content {
+    max-width: 760px;
+    height: 50%;
+    margin: 56px auto;
+    background-color: #FFF;
+    box-shadow: 0px 2px 6px #0E00330D;
+}
+
+.create-content section {
+    margin: 8px auto;
+    width: 45%;
+}
+
+.create-content section h2 {
+    padding-top: 16px;
+    padding-bottom: 8px;
+    color: #696969;
+}
+
+.create-content section form {
+    padding: 8px;
+    margin-top: 8px;
+}
+
+.create-content section form div {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.create-content section form div button {
+    width: 100%;
+}
+
+

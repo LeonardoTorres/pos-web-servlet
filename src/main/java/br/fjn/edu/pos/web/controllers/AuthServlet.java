@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.fjn.edu.pos.web.servlets;
+package br.fjn.edu.pos.web.controllers;
 
 import br.fjn.edu.pos.web.domain.User;
 import java.io.IOException;

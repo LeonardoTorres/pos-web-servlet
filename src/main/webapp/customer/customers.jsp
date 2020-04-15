@@ -54,10 +54,5 @@
                 </tbody>
             </table>
         </div>
-        <div>
-            <form action="pos-web/customer/customers" method="PUT">
-                <button type="submit">Atualizar</button>
-            </form>
-        </div>
     </body>
 </html>
