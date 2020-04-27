@@ -29,6 +29,10 @@ public class Customer {
         this.id = UUID.randomUUID().toString();
     }
 
+    public Customer() {
+    }
+    
+
     public String getName() {
         return name;
     }

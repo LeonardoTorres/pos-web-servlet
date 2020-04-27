@@ -19,6 +19,10 @@ public class Address {
         this.number = number;
     }
    
+    public Address(){
+        
+    }
+    
     public String getNumber() {
         return number;
     }

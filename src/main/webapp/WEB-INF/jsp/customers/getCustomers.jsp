@@ -16,7 +16,7 @@
     <body>
         <h1>Hello World!</h1>
 
-        <a href="create.jsp">Novo cliente</a>  
+        <a href="${pageContext.request.contextPath}/customers/new">Novo cliente</a>  
         <div>
             <h4>Último cadastrado: ${customer.id} </h4>
             <h4>Último endereço cadastrado: ${customer.address.street}</h4>
