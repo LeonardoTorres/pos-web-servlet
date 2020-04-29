@@ -17,11 +17,11 @@
                 <form action="auth" method="post">
                     <div>
                         <label for="userName">Usuário</label>
-                        <input id="userName" type="text" name="userName"/>
+                        <input id="userName" type="text" name="credentials.userName"/>
                     </div>
                     <div>
                         <label for="password">Senha</label>
-                        <input id="password" type="password" name="password"/>
+                        <input id="password" type="password" name="credentials.password"/>
                     </div>
                     <div>
                         <button type="submit">Entrar</button>

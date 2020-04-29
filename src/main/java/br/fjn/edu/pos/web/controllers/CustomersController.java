@@ -10,10 +10,10 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.fjn.edu.pos.web.annotations.Auth;
 import br.fjn.edu.pos.web.components.CustomersRepository;
 import br.fjn.edu.pos.web.domain.Customer;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 
 /**
  *
@@ -24,7 +24,10 @@ import javax.servlet.ServletContext;
  * 
  *                                                    PASTA                 página.jsp
  * path das views (páginas) - GET / - WEB-INF/jsp/{controlador - customers}/{nomeDoMétodo - getCustomers}
+ * path by Id - GET /customers/id/{sdfasdgasg} - PathParams
+ * path by Id - GET /customers?id={id} - QueryParams
  */
+@Auth
 @Controller
 @Path("/customers")
 public class CustomersController {
@@ -36,11 +39,11 @@ public class CustomersController {
     @Inject
     private CustomersRepository customersRepository;
     
+   
     @Get("new")
     public void create(){
         
     }
-    
     
     @Post("")
     public void store(Customer customer) {
@@ -49,12 +52,28 @@ public class CustomersController {
     }
 
     @Post("update")
-    public void update() {
-
+    public void update(Customer customer) {
+        customersRepository.update(customer);
+        result.redirectTo(this).getCustomers();
     }
 
+    @Get("id/{id}")
+    public void getCustomersById(String id){
+        Customer customer = customersRepository.findById(id);
+        System.out.println("customer" + customer);
+        result.include("customerToUpdate", customer);
+        result.of(this).update(null);
+    }    
+    
     @Get("")
     public void getCustomers() {
        result.include("customerList", customersRepository.list());
+    }
+    
+    @Post("remove")
+    public void remove(String id){
+        customersRepository.delete(id);
+        result.redirectTo(this).getCustomers();
+              
     }
 }

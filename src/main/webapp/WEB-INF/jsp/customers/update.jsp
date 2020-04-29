@@ -15,28 +15,27 @@
         <h1>Hello World!</h1>
          <main>
             <section>
-                <form action="/pos-web/customers" method="post">
-                    <input type="hidden" name="id" value="${customerToUpdate.id}"/>
-                    <input type="hidden" name="operation" value="PUT"/>
+                <form action="/pos-web/customers/update" method="post">
+                    <input type="hidden" name="customer.id" value="${customerToUpdate.id}"/>
                     <div>
                         <label for="name">Nome:</label>
-                        <input id="name" type="text" name="name" value="${customerToUpdate.name}"/>
+                        <input id="name" type="text" name="customer.name" value="${customerToUpdate.name}"/>
                     </div>
                     <div>
                         <label for="cpf">CPF:</label>
-                        <input id="cpf" type="text" name="cpf" value="${customerToUpdate.cpf}"/>
+                        <input id="cpf" type="text" name="customer.cpf" value="${customerToUpdate.cpf}"/>
                     </div>
                     <div>
                         <label for="age">Idade:</label>
-                        <input id="age" type="text" name="age" value="${customerToUpdate.age}"/>
+                        <input id="age" type="text" name="customer.age" value="${customerToUpdate.age}"/>
                     </div>
                     <div>
                         <label for="street">Rua:</label>
-                        <input id="street" type="text" name="street" value="${customerToUpdate.address.street}"/>
+                        <input id="street" type="text" name="customer.address.street" value="${customerToUpdate.address.street}"/>
                     </div>
                     <div>
                         <label for="number">Número:</label>
-                        <input id="number" type="text" name="number" value="${customerToUpdate.address.number}"/>
+                        <input id="number" type="text" name="customer.address.number" value="${customerToUpdate.address.number}"/>
                     </div>
                     <div>
                         <button type="submit">Salvar</button>

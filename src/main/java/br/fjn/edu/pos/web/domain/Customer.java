@@ -13,8 +13,8 @@ import java.util.UUID;
  * @author leonardo
  */
 public class Customer {
-    
-    private String id; 
+
+    private String id;
     private String name;
     private String cpf;
     private Integer age;
@@ -30,8 +30,8 @@ public class Customer {
     }
 
     public Customer() {
+        this.id = UUID.randomUUID().toString();
     }
-    
 
     public String getName() {
         return name;
@@ -71,11 +71,16 @@ public class Customer {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
-    }  
+    }
 
     public String getId() {
         return id;
     }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
     
+
 }

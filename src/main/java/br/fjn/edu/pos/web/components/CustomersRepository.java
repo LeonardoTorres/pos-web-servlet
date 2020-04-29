@@ -16,30 +16,38 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public class CustomersRepository {
-    
+
     private List<Customer> customersDB;
 
     public CustomersRepository() {
-       this.customersDB = new ArrayList<>();
+        this.customersDB = new ArrayList<>();
+        this.customersDB.add(new Customer("joao", "123", 20));
     }
-    
-    public void create(Customer customer){
+
+    public void create(Customer customer) {
         this.customersDB.add(customer);
     }
-    
-    public Customer findById(String id){
-        return null;
+
+    public Customer findById(String id) {
+        return customersDB.stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst().orElse(null);
     }
-    
-    public List<Customer> list(){
+
+    public List<Customer> list() {
         return this.customersDB;
     }
-    
-    public Customer update(Customer customer){
-        return null;
+
+    public Customer update(Customer customer) {
+        for (int i = 0; i < customersDB.size(); i++) {
+           if (customersDB.get(i).getId().equals(customer.getId())){
+               customersDB.set(i, customer);
+           } 
+        }
+        return customer;
     }
-    
-    public void delete(String id){
-        
+
+    public void delete(String id) {
+
     }
 }

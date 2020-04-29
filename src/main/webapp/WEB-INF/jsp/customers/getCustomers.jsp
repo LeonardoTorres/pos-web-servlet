@@ -46,7 +46,7 @@
                                 <fmt:formatDate pattern="dd/MM/yyyy hh:mm:ss" value="${customer.createdAt}"/>
                             </td>
                             <td>
-                                <a href="${pageContext.request.contextPath}/customers?customerId=${customer.id}">Editar</a> 
+                                <a href="${pageContext.request.contextPath}/customers/id/${customer.id}">Editar</a> 
                                 Excluir
                             </td>
                         </tr>
