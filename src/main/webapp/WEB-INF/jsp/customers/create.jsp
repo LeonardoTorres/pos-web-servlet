@@ -21,23 +21,24 @@
                 <form action="/pos-web/customers" method="post">
                     <div>
                         <label for="name">Nome:</label>
-                        <input id="name" type="text" name="customer.name"/>
+                        <input id="name" type="text" name="customer.name" value="${customer.name}"/>
                     </div>
                     <div>
                         <label for="cpf">CPF:</label>
-                        <input id="cpf" type="text" name="customer.cpf"/>
+                        <input id="cpf" type="text" name="customer.cpf" value="${customer.cpf}"/>
+                        <p>${cpfError}</p>
                     </div>
                     <div>
                         <label for="age">Idade:</label>
-                        <input id="age" type="text" name="customer.age"/>
+                        <input id="age" type="text" name="customer.age" value="${customer.age}"/>
                     </div>
                     <div>
                         <label for="street">Rua:</label>
-                        <input id="street" type="text" name="customer.address.street"/>
+                        <input id="street" type="text" name="customer.address.street" value="${customer.address.street}"/>
                     </div>
                     <div>
                         <label for="number">Número:</label>
-                        <input id="number" type="text" name="customer.address.number"/>
+                        <input id="number" type="text" name="customer.address.number" value="${customer.address.number}"/>
                     </div>
                     <div>
                         <button class="btn-save" type="submit">Salvar</button>

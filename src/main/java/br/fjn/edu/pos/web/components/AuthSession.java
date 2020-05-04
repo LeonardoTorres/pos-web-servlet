@@ -15,14 +15,15 @@ import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class AuthSession implements Serializable{
     
-    private Boolean isLogged;
+    private boolean isLogged;
     private String userName;
 
     public void setUserName(String userName) {
         this.userName = userName;
     }
     
-    public Boolean isLogged(){
+    public boolean isLogged(){
+        System.out.println("isLogged " + isLogged);
         return isLogged;
     }
 

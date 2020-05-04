@@ -30,6 +30,7 @@ public class AuthIntercepts implements Interceptor{
     
     @Override
     public void intercept(InterceptorStack is, ControllerMethod cm, Object o) {
+        System.out.println("authSession" + authSession.isLogged());
         if (authSession.isLogged()){
             is.next(cm, o);
         }else{
@@ -40,7 +41,9 @@ public class AuthIntercepts implements Interceptor{
 
     @Override
     public boolean accepts(ControllerMethod cm) {
-         return cm.containsAnnotation(Auth.class) || cm.getController().getType().isAnnotationPresent(Auth.class);
+         boolean canGo =  cm.containsAnnotation(Auth.class) || cm.getController().getType().isAnnotationPresent(Auth.class);
+         System.out.println("Can go " + canGo);
+         return canGo;
     }
     
     

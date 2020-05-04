@@ -47,7 +47,12 @@
                             </td>
                             <td>
                                 <a href="${pageContext.request.contextPath}/customers/id/${customer.id}">Editar</a> 
-                                Excluir
+                                <form method="POST" action="${pageContext.request.contextPath}/customers/remove">
+                                    <input type="hidden" name="id" value="${customer.id}"/>
+                                    <button>
+                                        Excluir
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     </c:forEach>

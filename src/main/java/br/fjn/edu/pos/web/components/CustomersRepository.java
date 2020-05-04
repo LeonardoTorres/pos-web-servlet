@@ -6,48 +6,22 @@
 package br.fjn.edu.pos.web.components;
 
 import br.fjn.edu.pos.web.domain.Customer;
-import java.util.ArrayList;
 import java.util.List;
-import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author leonardo
  */
-@ApplicationScoped
-public class CustomersRepository {
+public interface CustomersRepository {
 
-    private List<Customer> customersDB;
+    void create(Customer customer);
 
-    public CustomersRepository() {
-        this.customersDB = new ArrayList<>();
-        this.customersDB.add(new Customer("joao", "123", 20));
-    }
+    void delete(String id);
 
-    public void create(Customer customer) {
-        this.customersDB.add(customer);
-    }
+    Customer findById(String id);
 
-    public Customer findById(String id) {
-        return customersDB.stream()
-                .filter(c -> c.getId().equals(id))
-                .findFirst().orElse(null);
-    }
+    List<Customer> list();
 
-    public List<Customer> list() {
-        return this.customersDB;
-    }
-
-    public Customer update(Customer customer) {
-        for (int i = 0; i < customersDB.size(); i++) {
-           if (customersDB.get(i).getId().equals(customer.getId())){
-               customersDB.set(i, customer);
-           } 
-        }
-        return customer;
-    }
-
-    public void delete(String id) {
-
-    }
+    Customer update(Customer customer);
+    
 }

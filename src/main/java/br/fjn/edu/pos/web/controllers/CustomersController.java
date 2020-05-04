@@ -10,9 +10,12 @@ import br.com.caelum.vraptor.Get;
 import br.com.caelum.vraptor.Path;
 import br.com.caelum.vraptor.Post;
 import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.interceptor.IncludeParameters;
 import br.fjn.edu.pos.web.annotations.Auth;
-import br.fjn.edu.pos.web.components.CustomersRepository;
 import br.fjn.edu.pos.web.domain.Customer;
+import br.fjn.edu.pos.web.domain.CustomersService;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.inject.Inject;
 
 /**
@@ -37,7 +40,7 @@ public class CustomersController {
     private Result result;
     
     @Inject
-    private CustomersRepository customersRepository;
+    private CustomersService customersService;
     
    
     @Get("new")
@@ -46,34 +49,38 @@ public class CustomersController {
     }
     
     @Post("")
-    public void store(Customer customer) {
-        customersRepository.create(customer);
-        result.redirectTo(this).getCustomers();
+    @IncludeParameters
+    public void store(Customer customer) {          
+        try {
+            customersService.create(customer);
+            result.redirectTo(this).getCustomers();
+        } catch (Exception ex) {
+            result.include("cpfError", ex.getMessage());
+            result.redirectTo(this).create();
+        }    
     }
 
     @Post("update")
     public void update(Customer customer) {
-        customersRepository.update(customer);
+        customersService.update(customer);
         result.redirectTo(this).getCustomers();
     }
 
     @Get("id/{id}")
     public void getCustomersById(String id){
-        Customer customer = customersRepository.findById(id);
-        System.out.println("customer" + customer);
+        Customer customer = customersService.findById(id);    
         result.include("customerToUpdate", customer);
         result.of(this).update(null);
     }    
     
     @Get("")
     public void getCustomers() {
-       result.include("customerList", customersRepository.list());
+       result.include("customerList", customersService.list());
     }
     
     @Post("remove")
     public void remove(String id){
-        customersRepository.delete(id);
-        result.redirectTo(this).getCustomers();
-              
+        customersService.delete(id);
+        result.redirectTo(this).getCustomers();          
     }
 }

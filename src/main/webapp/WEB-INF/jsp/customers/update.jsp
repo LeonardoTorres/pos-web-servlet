@@ -15,7 +15,7 @@
         <h1>Hello World!</h1>
          <main>
             <section>
-                <form action="/pos-web/customers/update" method="post">
+                <form action="${pageContext.request.contextPath}/customers/update" method="post">
                     <input type="hidden" name="customer.id" value="${customerToUpdate.id}"/>
                     <div>
                         <label for="name">Nome:</label>
